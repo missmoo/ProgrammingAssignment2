@@ -3,10 +3,8 @@
 
 ## Write a short comment describing this function
 Cache <- 0
-M <- NULL
 makeCacheMatrix <- function(x = matrix()) {
   M <- matrix(solve(x))
-  print("Cache now reads" M)
 }
 
 
@@ -14,12 +12,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  Cache <<- M
-  if(Cache==0){
+  Cache <- M
+  if(is.null(Cache)){
     print("cache empty.. Calculating..")
     Cache <- solve(x)
     Cache
-  Else 
+  }else{ 
     Cache
   }
+  
 }
