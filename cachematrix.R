@@ -1,23 +1,24 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
-Cache <- 0
+## Sets the cache to the inverse of x
+Cache <- NULL
+M <- matrix() ##Creating global variables
 makeCacheMatrix <- function(x = matrix()) {
-  M <- matrix(solve(x))
+  M <<- matrix(solve(x)) ##Calculate inverse
 }
 
 
-## Write a short comment describing this function
+## Retrieve cache information, if there is any
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  Cache <- M
-  if(is.null(Cache)){
+  Cache <<- matrix(M)
+  if(!is.na(Cache)){ ##If there is cache data, return it
+    return(Cache)
+  }else{  ## If there's no data in the cache, calculate and return it
     print("cache empty.. Calculating..")
     Cache <- solve(x)
-    Cache
-  }else{ 
     Cache
   }
   
